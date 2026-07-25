@@ -69,21 +69,28 @@ console.log(
   "Subscription fields:",
   Object.keys((prisma as any)._runtimeDataModel.models.Subscription.fields)
 );
-    console.log("ANTES DEL UPDATE");
+console.log("ANTES DEL UPSERT");
 
-subscription.update({
+await prisma.subscription.upsert({
   where: {
     userId,
   },
-  data: {
-    plan: plan as any,
+  update: {
+    plan,
     status: "ACTIVE",
-    stripeCustomerId: session.customer?.toString(),
-    stripeSubscriptionId: session.subscription?.toString(),
+    stripeCustomerId: session.customer?.toString() ?? "",
+    stripeSubscriptionId: session.subscription?.toString() ?? "",
+  },
+  create: {
+    userId,
+    plan,
+    status: "ACTIVE",
+    stripeCustomerId: session.customer?.toString() ?? "",
+    stripeSubscriptionId: session.subscription?.toString() ?? "",
   },
 });
 
-console.log("DESPUES DEL UPDATE");
+console.log("DESPUES DEL UPSERT");
 
     await prisma.credits.update({
       where: {
