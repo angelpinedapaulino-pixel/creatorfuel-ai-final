@@ -1,74 +1,87 @@
 import Link from "next/link";
+import { CheckCircle2 } from "lucide-react";
 
 const plans = [
   {
-    name: "Starter",
-    price: "$19",
-    description: "50 credits, creator funnel basics and Stripe billing.",
-    features: ["50 monthly credits", "Essential creator analytics", "Email support"],
+    name: "FREE",
+    price: "$0",
+    label: "Starter plan for creators getting started",
+    features: ["100 credits per month", "Basic AI models", "Standard support", "All content types"],
+    button: "Start free",
+    highlight: false,
   },
   {
-    name: "Pro",
-    price: "$49",
-    description: "150 credits, automation templates and priority growth insights.",
-    features: ["150 monthly credits", "Priority support", "Advanced reporting"],
+    name: "STARTER",
+    price: "$19.99",
+    label: "Perfect for creators who publish regularly",
+    features: ["500 credits per month", "Premium templates", "Priority support", "Advanced analytics"],
+    button: "Choose Starter",
+    highlight: true,
   },
   {
-    name: "Empire",
-    price: "$99",
-    description: "500 credits, premium workflows and team-ready tools.",
-    features: ["500 monthly credits", "Custom billing options", "Dedicated onboarding"],
+    name: "EMPIRE",
+    price: "$69.99",
+    label: "Designed for teams and high-volume creators",
+    features: ["2,500 credits per month", "Unlimited campaigns", "Dedicated onboarding", "Custom workflows"],
+    button: "Choose Empire",
+    highlight: false,
   },
 ];
 
 export default function PricingPage() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:py-24">
-      <div className="space-y-6 text-center">
-        <p className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-400">
-          Pricing for creator growth
-        </p>
-        <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-          Plans built for creators, not complexity.
-        </h1>
-        <p className="mx-auto max-w-2xl text-base leading-7 text-slate-400">
-          Choose the right plan for your creator business and scale with AI-driven workflows, Stripe payments, and real-time credit tracking.
-        </p>
-      </div>
+    <main className="min-h-screen bg-[#070B16] px-6 py-16 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-7xl">
+        <div className="space-y-6 text-center">
+          <p className="text-sm uppercase tracking-[0.28em] text-slate-400">CreatorFuel pricing</p>
+          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+            Premium creator plans with clear pricing.
+          </h1>
+          <p className="mx-auto max-w-2xl text-base leading-7 text-slate-400">
+            Keep your current workflows, credits, and billing logic intact while moving to a more polished plan experience.
+          </p>
+        </div>
 
-      <div className="mt-16 grid gap-6 lg:grid-cols-3">
-        {plans.map((plan, index) => (
-          <article
-            key={plan.name}
-            className={`rounded-[2rem] border p-8 shadow-[0_20px_80px_-40px_rgba(0,0,0,0.75)] ${
-              index === 1 ? "border-blue-500/30 bg-slate-950" : "border-slate-800 bg-[#111827]"
-            }`}
-          >
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <p className="text-sm uppercase tracking-[0.3em] text-slate-500">{plan.name}</p>
-                <p className="mt-4 text-4xl font-semibold text-white">{plan.price}</p>
-              </div>
-              <span className="rounded-full bg-blue-600/10 px-3 py-1 text-sm text-blue-300">Best value</span>
-            </div>
-            <p className="mt-6 text-sm leading-6 text-slate-400">{plan.description}</p>
-            <ul className="mt-8 space-y-3 text-sm text-slate-300">
-              {plan.features.map((feature) => (
-                <li key={feature} className="flex items-center gap-3">
-                  <span className="inline-flex h-2.5 w-2.5 rounded-full bg-blue-500" />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-            <Link
-              href="/register"
-              className="mt-10 inline-flex w-full items-center justify-center rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-500"
+        <div className="mt-16 grid gap-6 xl:grid-cols-3">
+          {plans.map((plan) => (
+            <article
+              key={plan.name}
+              className={`glass-card p-8 ${plan.highlight ? "border-violet-500/30 bg-[#12182F] shadow-[0_40px_120px_-80px_rgba(139,92,246,0.45)]" : "bg-white/5"}`}
             >
-              Get {plan.name}
-            </Link>
-          </article>
-        ))}
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <p className="text-sm uppercase tracking-[0.3em] text-slate-400">{plan.name}</p>
+                  <p className="mt-4 text-5xl font-semibold text-white">{plan.price}</p>
+                </div>
+                {plan.highlight ? (
+                  <span className="rounded-full bg-violet-500/10 px-3 py-1 text-xs uppercase tracking-[0.3em] text-violet-300">
+                    Popular
+                  </span>
+                ) : null}
+              </div>
+              <p className="mt-6 text-sm leading-6 text-slate-300">{plan.label}</p>
+              <ul className="mt-8 space-y-3 text-sm text-slate-200">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-center gap-3">
+                    <CheckCircle2 className="h-4 w-4 text-violet-400" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/register"
+                className={`mt-10 inline-flex w-full items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition ${
+                  plan.highlight
+                    ? "bg-gradient-to-r from-violet-500 to-cyan-500 text-white hover:brightness-110"
+                    : "border border-white/10 bg-white/5 text-white hover:bg-white/10"
+                }`}
+              >
+                {plan.button}
+              </Link>
+            </article>
+          ))}
+        </div>
       </div>
-    </section>
+    </main>
   );
 }
