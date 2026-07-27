@@ -31,6 +31,6 @@ export default async function HistoryPage() {
           </div>
         )}
       </div>
-      </div>
-    );
-  }
+    </div>
+  );
+}

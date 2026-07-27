@@ -34,11 +34,9 @@ export default function PricingPage() {
       <div className="mx-auto max-w-7xl">
         <div className="space-y-6 text-center">
           <p className="text-sm uppercase tracking-[0.28em] text-slate-400">CreatorFuel pricing</p>
-          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-            Premium creator plans with clear pricing.
-          </h1>
+          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">Premium creator plans with transparent pricing.</h1>
           <p className="mx-auto max-w-2xl text-base leading-7 text-slate-400">
-            Keep your current workflows, credits, and billing logic intact while moving to a more polished plan experience.
+            Keep your current workflows and backend billing logic intact while upgrading to a premium plan experience.
           </p>
         </div>
 

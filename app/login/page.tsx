@@ -57,14 +57,14 @@ export default function LoginPage() {
                 <Mail className="h-5 w-5 text-violet-400" />
                 <div>
                   <p className="text-sm font-semibold text-white">Secure login</p>
-                  <p className="text-sm text-slate-400">JWT auth and cookie sessions keep you safe.</p>
+                  <p className="text-sm text-slate-400">JWT auth and cookie sessions keep your account protected.</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <Lock className="h-5 w-5 text-cyan-400" />
                 <div>
-                  <p className="text-sm font-semibold text-white">Modern auth</p>
-                  <p className="text-sm text-slate-400">Continue with your CreatorFuel account instantly.</p>
+                  <p className="text-sm font-semibold text-white">Fast access</p>
+                  <p className="text-sm text-slate-400">Sign in and continue your creator workflow instantly.</p>
                 </div>
               </div>
             </div>
